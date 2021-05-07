@@ -76,3 +76,6 @@ LT high school and graduate are different and highschool and graduate are differ
 # Discussion and Conclusion
 
 <!--Discussion and conclusion here.  If you found a relationship be sure to consider whether the relationship occurs because one of the variavbles causes the other, or whether they perhasps are related for some other reason.  Watch the chapter 6 videos from the GeorgeTown videos collection.!-->
+  
+Yes there is a difference in WORDSUM test performance, graduate students did better then LT high school junior students 
+  
