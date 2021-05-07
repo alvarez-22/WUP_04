@@ -33,9 +33,26 @@ $H_a$ There is a significant difference in average score on the WORDSUM test bet
 ## Descriptive Results
 
 ### Graphical Descriptive Results
-
-<!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
   
+```{r}
+barchartGC(~BIGBANG + POSTLIFE,data=GSSdata)
+barchartGC(~BIGBANG + POSTLIFE,data=GSSdata, type="percent")
+
+```
+```{r}
+dd2 <- GSSdata %>% group_by(BIGBANG,POSTLIFE) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+basicC <- ggplot(dd2,aes(x=BIGBANG,y=count,fill=POSTLIFE))
+basicC + geom_bar(stat="identity",position="dodge")
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=BIGBANG,y=prcnt*100,fill=POSTLIFE)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```  
+  
+Th barchart  shows that people that believe in the BIGBANG theory are less likely to beleive in the postlife.
+   
+<!--Graphical results here.  Make sure to show your code.  Provide appropriate labels for axes, giving units if possible, and provide a good title for the graph, too.  Use the graphical results to describe the patterns if any that exist in the data as focused toward the research question!-->
   
 #### Using ggplot
 
@@ -52,7 +69,9 @@ From the graph it looks like graduate does better then LT High School and high s
 <!--Numerical results go here. Use the numerical results to describe the patterns if any that exist in the data as focused toward the research question!-->
   
 ```{r}
-favstats(WORDSUM~DEGREE,data=GSSdata)
+table1 <- xtabs(~BIGBANG + POSTLIFE, data=GSSdata)
+rowPerc(table1)
+colPerc(table1)
 ```
   
 LT high school is the littlest, followed by high school, bachelor, junior college, with Graduate at its best.
